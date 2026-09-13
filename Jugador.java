@@ -32,9 +32,7 @@ public class Jugador {
 
     public String getGrupos() {
         String textoGrupos = "";
-        Set<Carta> cartasUtilizadas = new HashSet<>();
-
-        // 1. Detección de Grupos (mismo valor)
+        Set<Carta> cartasUtilizadas = new HashSet<>();   
         int[] contadores = new int[NombreCarta.values().length];
         for (Carta carta : cartas) {
             int posicion = carta.getNombre().ordinal();
@@ -55,19 +53,14 @@ public class Jugador {
                     }
                 }
             }
-        }
-
-        // 2. Detección de Escaleras delegada al archivo optimizado AnalizadorEscaleras
+        }        
         AnalizadorEscaleras analizador = new AnalizadorEscaleras(cartas);
         AnalizadorEscaleras.ResultadoEscaleras resultadoEscaleras = analizador.procesar();
         
-        cartasUtilizadas.addAll(resultadoEscaleras.cartasUtilizadas);
-
-        // 3. Cartas Sobrantes y Puntos calculados desde el estado del jugador
+        cartasUtilizadas.addAll(resultadoEscaleras.cartasUtilizadas);      
         String textoSobrantes = buscarCartasSobrantes(cartasUtilizadas);
         int puntos = calcularPuntosSobrantes(cartasUtilizadas);
 
-        // 4. Consolidación de la respuesta final
         String resultado = "";
         if (!textoGrupos.isEmpty()) {
             resultado += textoGrupos;

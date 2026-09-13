@@ -18,9 +18,7 @@ public class AnalizadorEscaleras {
         Arrays.sort(ordenadas, Comparator.comparingInt(Carta::getIndice));
 
         List<BloqueSecuencia> bloques = new ArrayList<>();
-        int longitudMaxima = 1;
-
-        // Recorrido único para encontrar todos los bloques de escaleras posibles
+        int longitudMaxima = 1;       
         int i = 0;
         while (i < ordenadas.length) {
             int inicio = i;
@@ -47,14 +45,11 @@ public class AnalizadorEscaleras {
         StringBuilder textoResultado = new StringBuilder();
         Set<Carta> cartasEnEscalera = new HashSet<>();
 
-        // Procesar los bloques encontrados una sola vez
-        for (BloqueSecuencia bloque : bloques) {
-            // Registrar todas las cartas que forman parte de cualquier escalera válida
+        for (BloqueSecuencia bloque : bloques) {            
             for (int j = bloque.inicio; j <= bloque.fin; j++) {
                 cartasEnEscalera.add(ordenadas[j]);
             }
-
-            // Construir texto únicamente para las escaleras que alcancen la longitud máxima
+            
             if (bloque.longitud == longitudMaxima) {
                 if (textoResultado.length() == 0) {
                     textoResultado.append("Se encontraron las siguientes escaleras:\n");
@@ -70,8 +65,7 @@ public class AnalizadorEscaleras {
 
         return new ResultadoEscaleras(textoResultado.toString(), cartasEnEscalera);
     }
-
-    // Estructuras auxiliares internas de apoyo
+        
     public static class ResultadoEscaleras {
         public String texto;
         public Set<Carta> cartasUtilizadas;

@@ -9,9 +9,7 @@ import javax.swing.JOptionPane;
 
 public class Carta {
 
-    private int indice;
-
-    // metodo constructor
+    private int indice;   
     public Carta(Random r) {
         indice = r.nextInt(52) + 1;
     }
@@ -26,8 +24,7 @@ public class Carta {
         JLabel lblCarta = new JLabel(imgCarta);
         lblCarta.setBounds(x, y, imgCarta.getIconWidth(), imgCarta.getIconHeight());
         pnl.add(lblCarta);
-
-        // evento para mostrar la identidad de la carta
+        
         lblCarta.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evento) {
                 JOptionPane.showMessageDialog(null, getNombre() + " de " + getPinta());

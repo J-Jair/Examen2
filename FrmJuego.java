@@ -11,11 +11,8 @@ import java.util.Random;
 
 public class FrmJuego extends JFrame {
 
-    // variables globales
     private JPanel pnlJugador1, pnlJugador2;
-    private JTabbedPane tpJugadores;
-
-    // metodo constructor
+    private JTabbedPane tpJugadores;    
     public FrmJuego() {
         setSize(500, 300);
         setTitle("Juguemos al Apuntado!");
@@ -29,34 +26,24 @@ public class FrmJuego extends JFrame {
         JButton btnVerificar = new JButton("Verificar");
         btnVerificar.setBounds(120, 10, 100, 25);
         add(btnVerificar);
-
-        // agregar el panel de pestañas
+       
         tpJugadores = new JTabbedPane();
         tpJugadores.setBounds(10, 50, 470, 200);
         add(tpJugadores);
-
-        // agregar el panel para la primera pestaña
+        
         pnlJugador1 = new JPanel();
         pnlJugador1.setBackground(new Color(0, 255, 0));
         tpJugadores.add("Martín Estrada Contreras", pnlJugador1);
 
-        // agregar el panel para la segunda pestaña
         pnlJugador2 = new JPanel();
         pnlJugador2.setBackground(new Color(0, 255, 255));
         tpJugadores.add("Raúl Vidal", pnlJugador2);
 
-        // eventos
         btnRepartir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evento) {
                 repartir();
             }
         });
-
-        /*
-         * btnRepartir.addActionListener(evento -> {
-         * repartir();
-         * });
-         */
 
         btnVerificar.addActionListener(evento -> {
             verificar();
