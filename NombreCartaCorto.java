@@ -1,50 +1,11 @@
 public class NombreCartaCorto {
+    private static final String[] CORTOS = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
     public static String convertir(NombreCarta nombre) {
-
-        switch (nombre) {
-
-            case AS:
-                return "A";
-
-            case DOS:
-                return "2";
-
-            case TRES:
-                return "3";
-
-            case CUATRO:
-                return "4";
-
-            case CINCO:
-                return "5";
-
-            case SEIS:
-                return "6";
-
-            case SIETE:
-                return "7";
-
-            case OCHO:
-                return "8";
-
-            case NUEVE:
-                return "9";
-
-            case DIEZ:
-                return "10";
-
-            case JACK:
-                return "J";
-
-            case QUEEN:
-                return "Q";
-
-            case KING:
-                return "K";
-
-            default:
-                return nombre.toString();
+        int index = nombre.ordinal();
+        if (index >= 0 && index < CORTOS.length) {
+            return CORTOS[index];
         }
+        return nombre.toString();
     }
-    
 }
